@@ -17,19 +17,19 @@ export async function main(ns) {
         'twelve'
     ]
 
-    // Defines the task we want the gang to engage in
+    // Defines the task we want the gang to engage in based on the input from the prompt
     let myGangTask = await ns.prompt('Set gang task:', {type:'text'});
     // let myGangTask = 'Strongarm Civilians';
     // let myGangTask = 'Territory Warfare';
 
-    // Defines the 
+    // Defines if we run the equipment purchase block based on input from the prompt
     let gangEquipPurchase = await ns.prompt('Buy equipment for gangsters?:', {type:'text'})
 
     // Defines the name that will be set for the next gang member we recruit
     let myGangsterNextName = myGangsterNames[ns.gang.getMemberNames().length];
 
-    // Validates if we have enough respect to recruit a new gang member
-    if (ns.gang.canRecruitMember()) {
+    // Loop the validates if we have enough respect to recruit a new gang member, and while true
+    while (ns.gang.canRecruitMember()) {
 
         // if true recruits a member to the gang and names them based on an array of how many members are in the gang
         ns.gang.recruitMember(myGangsterNextName);
@@ -50,6 +50,9 @@ export async function main(ns) {
             ns.tprint(`${myGangsterNextName} has been reqruited, and tasked with: ${myGangTask}`);
 
         }
+
+        // sleep for 500ms
+        await ns.sleep(500)
 
     }
 
