@@ -23,7 +23,7 @@ export async function main(ns) {
     // let myGangTask = 'Territory Warfare';
 
     // Defines if we run the equipment purchase block based on input from the prompt
-    let gangEquipPurchase = await ns.prompt('Buy equipment for gangsters?:', {type:'text'})
+    let gangEquipPurchase = await ns.prompt('Buy equipment for gangsters?:', {type:'boolean'})
 
     // Defines the name that will be set for the next gang member we recruit
     let myGangsterNextName = myGangsterNames[ns.gang.getMemberNames().length];
